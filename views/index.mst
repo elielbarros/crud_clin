@@ -1,0 +1,105 @@
+{{>header}}
+<head>
+    <link href='//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+<div class="shadow-lg p-3 mb-5 bg-body" style="margin:25px;">
+    <form class="row g-3" style="margin-bottom:10px;" action="/search" method="POST" autocomplete="off">
+        <div class="col-auto">
+            <input type="text" class="form-control" name="id"  placeholder="Id">
+        </div>
+        <div class="col-auto">
+            <input type="text" class="form-control" name="nome"  placeholder="Nome">
+        </div>
+        <div class="col-auto">
+            <input type="date" class="form-control" name="dataNasc"   >
+        </div>
+         <div class="col-auto">
+            <input type="text" class="form-control" name="cpf_cnpj"  placeholder="Cpf ou Cnpj">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-outline-dark mb-3">Pesquisar</button>
+        </div>
+        
+    </form>
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>CPF/CNPJ</th>
+                    <th>Name</th>
+                    <th>Telefone</th>
+                    <th>Nascimento</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#patients}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{cpf_cnpj}}</td>
+                    <td>{{nome}}</td>
+                    <td>{{cel}}</td>
+                    <td>{{dataNasc}}</td>
+                    <td><a><img onclick="fillModal('{{id}}','{{cpf_cnpj}}','{{nome}}','{{cel}}','{{{dataNasc}}}')" src="/imgs/editar.png" style="width:24px;"></a><a><img onclick="deleteClient('{{id}}')" src="/imgs/lixeira.png" style="width:24px;margin-left:35%;"></a></td>
+                </tr>
+            {{/patients}} 
+            </tbody>
+        </table>
+    <div>
+
+
+
+
+
+
+
+{{>addModal}} 
+{{>editModal}} 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.10.24/b-1.7.0/b-html5-1.7.0/r-2.2.7/datatables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready( function () {
+            $('#example').DataTable({
+            });
+        } );
+    </script>
+
+    <script>
+        function fillModal(id, cpf_cnpj, nome, cel, dataNasc){
+            document.getElementById("editId").value = id;
+            document.getElementById("editCpf_cnpj").value = cpf_cnpj;
+            document.getElementById("editNome").value = nome;  
+            document.getElementById("editCel").value = cel;
+            document.getElementById("editDataNasc").value = dataNasc;
+            var editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+        }
+
+        function deleteClient(id){
+            var aler = confirm(`Deletar o elemento de id: ${id}?`);
+            if(aler){
+                window.location.replace(`/removeClient/${id}`);
+            } 
+            return;
+        }
+
+      
+    </script>
+
+    <script>
+    </script>
+</body>
+</html>

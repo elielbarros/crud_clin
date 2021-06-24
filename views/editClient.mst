@@ -1,0 +1,22 @@
+{{>header}}
+<body>
+     <div class="shadow-lg p-3 mb-5 bg-white rounded" style="margin:25px;">
+            <div class="row">
+                <div class="col">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" name="name" id="name" value="{{name}}">
+                </div>
+                <div class="col">    
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" name="telephone" id="telefone" value="{{numTel}}">
+                </div>
+                <div class="col-md-2">
+                    <div style="margin-top:32px;">
+                        <button type="Submit" class="btn btn-outline-primary">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>

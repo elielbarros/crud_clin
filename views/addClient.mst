@@ -1,0 +1,38 @@
+{{>header}}
+<body>
+     <div class="shadow-lg p-3 mb-5 bg-white rounded" style="margin:25px;">
+        <form method="POST" action='/addClientAction' autocomplete="off">
+            <div class="row">
+                <div class="col">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="name" placeholder="Nome">
+                </div>
+
+                <div class="col">    
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" name="cel" id="telefone" placeholder="Telefone">
+                </div>
+
+
+                <div class="col">    
+                    <label for="cpf_cnpj" class="form-label">Cpf/Cnpj</label>
+                    <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj">
+                </div>
+
+
+                <div class="col">    
+                    <label for="dataNasc" class="form-label">Nascimento</label>
+                    <input type="text" class="form-control" name="dataNasc" id="dataNasc">
+                </div>
+
+
+                <div class="col-md-2">
+                    <div style="margin-top:32px;">
+                        <button type="Submit" class="btn btn-outline-primary">Salvar</button>
+                    </div>
+                </div>
+            </div>        
+        </form>
+    </div>
+</div>
+</body>
